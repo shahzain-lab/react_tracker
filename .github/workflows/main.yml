@@ -37,5 +37,5 @@ jobs:
       - name: installing surge
         run: npm install --global surge
       - name: deploying surge
-        run: surge ./build high-line.surge.sh --token ${{secrets.EXPENSE_TRACKER}}
+        run: surge ./build harsh-donkey.surge.sh --token ${{secrets.EXPENSE_TRACKER}}
         

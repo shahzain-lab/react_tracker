@@ -1,38 +1,109 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  /* width: 100vw;
+  height: 100vh; */
+  background: #4b5158;
+  color: #c7c1c1;
+  letter-spacing: 1px;
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Zain{
+  width: 30%;
+  height: 60%;
+  background-color: #272731;
+  border-radius: .5rem;
+  box-shadow: 0 0 1.3rem black;
+  margin: 20px auto;
+  padding: 10px 20px ;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.style{
+  margin: 14px 0;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.padd{
+  margin: 20px 15px;
+}
+.balance{
+  margin: 1.5rem 0;
+}
+.income{
+  color: #6efc6e;
+}
+.expense{
+  color: red;
+}
+.display{
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 15px 0;
+  box-shadow: 0 0 1rem black;
+  transition: .3s;
+  
+}
+.display:hover{
+  transform: translateY(-5px);
+}
+.hist{
+  margin: 25px 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.align li{
+  display: block;
+  justify-content: space-between;
+  box-shadow: 0 0 1rem rgb(31, 30, 30);
+  margin: 5px;
+  padding: 5px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sapn span{
+  float: right;
+}
+.btn{
+  cursor: pointer;
+  background-color: #3f3e3e;
+  border: 0;
+  color: #fff;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 2px 5px;
+  /* position: absolute; */
+  top: 55%;
+  left: 0%;
+  /* transform: translate(-100%, -50%); */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.sapn:hover .btn{
+  opacity: 1;
+}
+.add{
+  margin: 15px 15px;
+}
+.form
+{
+  margin-top: 20px;
+  align-items: center;
+}
+.form input{
+  width: 15rem;
+  padding: 8px ;
+  border-radius: 5px;
+  outline: none;
+  margin-bottom: 10px;
+  background-color: #626364;color: #fff;
+}
+.form ::placeholder{
+  color: #999898;
+}
+.footer{
+  width: 10rem!important;margin-left: 60px!important;cursor: pointer!important;font-weight: 600!important;background: #4b5158!important;color: #15151d!important;
+}
+.copyright{
+  text-align: center;
+  font-size: 15px;
+  padding-top:20px ;
 }

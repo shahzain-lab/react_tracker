@@ -1,12 +1,13 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Expense Tracker
+name: reactFirst-pro
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
   push:
     branches: [ master ]
+
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -22,16 +23,17 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: setting node js
-      - uses: actions/setup-node@v2.1.2 
+        uses: actions/setup-node@v2.1.2
         with:
-          node-version: 12
+          node-version: 12 
 
       # Runs a set of commands using the runners shell
       - name: Github action for Yarn
         uses: Borales/actions-yarn@v2.3.0
         with:
-      #yarn command
-           cmd: install
+
+    # Yarn command
+         cmd: install
       - name: creating build
         run: yarn build
       - name: installing surge

@@ -27,13 +27,16 @@ export const AddTransaction = () => {
                 <input type="text"
                  value={Description}
                  onChange={(e)=>setDescription(e.target.value)}
-                 placeholder="Enter your Desc..."/>
+                 placeholder="Enter your Desc..."
+                 required
+                     />
                  <br />
                 <label>Amount</label><br />
                 <input type="number"
                  value={transactionAmount}
                  onChange={(e)=>setTransactionAmount(e.target.value)}
-                 placeholder="Enter your Amount..."/>
+                 placeholder="Enter your Amount..."
+                  required/>
                  <br />
                 <input type="submit"value="Add Transaction"className="footer"/>
             </form>

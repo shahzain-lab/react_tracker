@@ -1,23 +1,38 @@
 import React, { useContext } from 'react';
-import { GlobalContext } from '../context/GlobalState';
+import { GlobalState } from '../context/GlobalState';
 
 
-export const Transaction = ({transaction}) => {
-    const { delTransaction } = useContext(GlobalContext)
 
-    const sign = transaction.transactionAmount > 0 ? "+" : "-";
-    
-     const transactionType = transaction.transactionAmount > 0 ? "plus": "minus";
+//Money formatter function
+function moneyFormatter(num) {
+    let p = num.toFixed(2).split('.');
+    return (
+      '$ ' +
+      p[0]
+        .split('')
+        .reverse()
+        .reduce(function (acc, num, i, orig) {
+          return num === '-' ? acc : num + (i && !(i % 3) ? ',' : '') + acc;
+        }, '') +
+      '.' +
+      p[1]
+    );
+  }
+  
+export const Transaction =({transaction})=> {
 
-    const color = transaction.transactionAmount > 0;
+    const { delTransaction } = useContext(GlobalState);
+
+    const sign = transaction.amount > 0 ? '+' : '-';
 
     return(
-        <li className="sapn">
-            <li className={transactionType}>
-            {transaction.Description}
-        <span className={color ?"income":"expense"}>{sign}${Math.abs(transaction.transactionAmount)}</span>
-        <button className="btn"onClick={() => delTransaction(transaction.id)}>X</button>
-        </li>
-        </li>
+         <li className={transaction.amount < 0 ? 'minus' : 'plus'}>
+
+      {transaction.Description} 
+      <span>{sign}{moneyFormatter(transaction.Amount)}</span>
+      <i className="fas fa-trash-alt" 
+       onClick={() => delTransaction(transaction.id)}>
+        </i>
+    </li>
     )
 }

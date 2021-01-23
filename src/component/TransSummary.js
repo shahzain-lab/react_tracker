@@ -1,25 +1,32 @@
 import React, { useContext } from 'react';
-import { GlobalContext } from '../context/GlobalState';
+import { GlobalState } from '../context/GlobalState';
 
-export const TransSummary = () => {
+export const Summary =()=> {
 
-    const {transactions}  = useContext(GlobalContext)
-    const transactionAmounts = transactions.map(transaction => transaction.transactionAmount);
+    const { transactions } = useContext(GlobalState);
+     const transactionAmount = transactions.map(transaction => transaction.Amount);
 
-    const income = transactionAmounts
-    .filter(transaction => transaction > 0)
-    .reduce((acc , transaction) => (acc +=transaction),0)
-    .toFixed(2);
+     const income = transactionAmount
+     .filter(transaction => transaction > 0)
+     .reduce((acc, transaction) => (acc += transaction),0)
+     .toFixed(2);
 
-    const expense = Math.abs(transactionAmounts
-        .filter(transaction => transaction < 0)
-        .reduce((acc , transaction) => (acc += transaction), 0)
-        .toFixed(2)
-        )
+     const expense = Math.abs(transactionAmount
+     .filter(transaction => transaction < 0)
+     .reduce((acc , transaction) => (acc += transaction),0))
+     .toFixed(2);
+
+
     return(
-        <zain className="display">
-    <h3 className="income">INCOME <br />${income}</h3>
-    <h3 className="expense">EXPENSE <br />${expense}.00</h3>
-        </zain>
+        <div className="inc-exp-container">
+        <div>
+        <i className="fas fa-chart-line fa-2x"></i>
+  <p className="money plus">{income}</p>
+        </div>
+        <div>
+        <i className="fas fa-sort-amount-down-alt fa-2x"></i>
+  <p className="money minus">{expense}</p>
+        </div>
+      </div>
     )
 }

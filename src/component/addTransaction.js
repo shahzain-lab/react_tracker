@@ -1,44 +1,55 @@
-import React, { useState, useContext } from 'react'
-import { GlobalContext } from '../context/GlobalState'
+import React, { useState, useContext } from 'react';
+import { GlobalState } from '../context/GlobalState';
 
-export const AddTransaction = () => {
 
-    const {addTransaction} = useContext(GlobalContext);
+export const AddTrans =()=> {
+   const [Description, setDescription] = useState('');
+   const [Amount, setAmount] = useState('');
 
-    const [Description, setDescription] = useState("");
-    const [transactionAmount, setTransactionAmount] = useState(0)
+     const { addTransaction } = useContext(GlobalState);
+  
+    const onSubmit =(e)=> {
+      e.preventDefault();
 
-    const onSubmit = (e) => {
-        e.preventDefault()
+      const newTransaction={
+          id: new Date().getTime(),
+          Description,
+          Amount: +Amount
+      }
 
-        const newTransaction = {
-        id: new Date().getTime(),
-        Description,
-        transactionAmount: +transactionAmount
-    }
+      addTransaction(newTransaction)
+   }
 
-    addTransaction(newTransaction)
-    }
-    return (
+    return(
         <div>
-            <h3 className="add">Add Transaction</h3>
-            <form className="form"onSubmit={onSubmit}>
-                <label>Description</label><br />
-                <input type="text"
-                 value={Description}
-                 onChange={(e)=>setDescription(e.target.value)}
-                 placeholder="Enter your Desc..."
-                 required
-                     />
-                 <br />
-                <label>Amount</label><br />
-                <input type="number"
-                 value={transactionAmount}
-                 onChange={(e)=>setTransactionAmount(e.target.value)}
-                 placeholder="Enter your Amount..."
-                  required/>
-                 <br />
-                <input type="submit"value="Add Transaction"className="footer"/>
+            <h3>Add Transaction</h3>
+            <form onSubmit={onSubmit}>
+                <div className="form-control">
+                <label>Add Description</label>
+                <br />
+                <input 
+                autoComplete='off'
+                value={Description}
+                id="Description"
+                onChange={(e) => setDescription(e.target.value)}
+                type="text"
+                placeholder="Enter Description"
+                required="Required"
+                  />
+                  </div>
+                <div className="form-control">
+                <label>Add Amount</label>
+                <br />
+                <input
+                id="Amount"
+                 value={Amount}
+                 onChange={(e) => setAmount(e.target.value)}
+                type="number"
+                 placeholder="Add Amount"
+                 required="Required"
+                />
+                </div>
+                <button type="submit" className="btn">Add Transaction</button>
             </form>
         </div>
     )

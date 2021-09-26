@@ -8,7 +8,7 @@ const userState = {
 export const GlobalState = createContext(userState);
 
 export const GlobalProvider =({children})=>{
-    const [state,dispatch] = useReducer(AppReducer,userState);
+    const [state, dispatch] = useReducer(AppReducer,userState);
    
     function delTransaction (id) {
      dispatch({

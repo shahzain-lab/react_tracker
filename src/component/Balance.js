@@ -21,8 +21,7 @@ export const Balance =()=> {
     const { transactions } = useContext(GlobalState);
 
     const transactionAmount = transactions.map(transaction => transaction.Amount);
-    const balance = transactionAmount.reduce((acc , item) => (acc += item), 0)
-    // .toFixed(2)
+    const balance = transactionAmount.reduce((acc , item) => (acc += item), 0);
     
     return(
         <div>
